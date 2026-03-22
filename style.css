@@ -168,6 +168,13 @@ h1, h2 {
     background-color: var(--button-hover);
 }
 
+.disqus-container {
+    margin-top: 2rem;
+    padding: 2rem;
+    text-align: left;
+    min-height: 300px;
+}
+
 /* Animal Face Test Styles */
 .animal-test-container {
     margin-bottom: 2rem;
@@ -248,11 +255,4 @@ h1, h2 {
 #retry-btn:hover {
     background-color: var(--text-color);
     color: var(--container-bg);
-}
-
-.disqus-container {
-    margin-top: 2rem;
-    padding: 2rem;
-    text-align: left;
-    min-height: 300px;
 }
