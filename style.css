@@ -9,6 +9,10 @@
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body.dark-mode {
     --bg-color: #121212;
     --text-color: #e0e0e0;
