@@ -34,3 +34,86 @@ generatorBtn.addEventListener('click', () => {
         lottoNumbersContainer.appendChild(circle);
     }
 });
+
+// Animal Face Test Logic
+const MODEL_URL = "https://teachablemachine.withgoogle.com/models/XM_DUkmKI/";
+let model, maxPredictions;
+
+const imageInput = document.getElementById('image-input');
+const uploadArea = document.getElementById('upload-area');
+const previewImage = document.getElementById('preview-image');
+const uploadLabel = document.getElementById('upload-label');
+const resultContainer = document.getElementById('result-container');
+const resultMessage = document.getElementById('result-message');
+const labelsDiv = document.getElementById('label-container');
+const loadingSpinner = document.getElementById('loading-spinner');
+const retryBtn = document.getElementById('retry-btn');
+
+async function initAnimalModel() {
+    const modelURL = MODEL_URL + "model.json";
+    const metadataURL = MODEL_URL + "metadata.json";
+    model = await tmImage.load(modelURL, metadataURL);
+    maxPredictions = model.getTotalClasses();
+}
+
+uploadArea.addEventListener('click', () => imageInput.click());
+
+imageInput.addEventListener('change', async (e) => {
+    if (e.target.files.length > 0) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        
+        reader.onload = async (event) => {
+            previewImage.src = event.target.result;
+            previewImage.style.display = 'block';
+            uploadLabel.style.display = 'none';
+            
+            await startAnalysis();
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+async function startAnalysis() {
+    loadingSpinner.style.display = 'block';
+    resultContainer.style.display = 'none';
+    
+    if (!model) await initAnimalModel();
+    
+    const prediction = await model.predict(previewImage);
+    loadingSpinner.style.display = 'none';
+    resultContainer.style.display = 'block';
+    
+    displayResults(prediction);
+}
+
+function displayResults(prediction) {
+    labelsDiv.innerHTML = '';
+    prediction.sort((a, b) => b.probability - a.probability);
+    
+    const topResult = prediction[0];
+    resultMessage.textContent = `당신은 ${topResult.className}상입니다!`;
+    
+    prediction.forEach(p => {
+        const prob = (p.probability * 100).toFixed(2);
+        const barHtml = `
+            <div class="result-bar-wrapper">
+                <div class="result-label">
+                    <span>${p.className}</span>
+                    <span>${prob}%</span>
+                </div>
+                <div class="result-bar-bg">
+                    <div class="result-bar-fill" style="width: ${prob}%"></div>
+                </div>
+            </div>
+        `;
+        labelsDiv.insertAdjacentHTML('beforeend', barHtml);
+    });
+}
+
+retryBtn.addEventListener('click', () => {
+    imageInput.value = '';
+    previewImage.style.display = 'none';
+    uploadLabel.style.display = 'block';
+    resultContainer.style.display = 'none';
+});
