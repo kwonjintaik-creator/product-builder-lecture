@@ -163,3 +163,9 @@ h1, h2 {
 #submit-btn:hover {
     background-color: var(--button-hover);
 }
+
+.disqus-container {
+    margin-top: 2rem;
+    padding: 2rem;
+    text-align: left;
+}
