@@ -7,7 +7,7 @@ const body = document.body;
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'dark') {
     body.classList.add('dark-mode');
-    themeToggle.textContent = 'Toggle Light Mode';
+    themeToggle.textContent = '라이트 모드 켜기';
 }
 
 themeToggle.addEventListener('click', () => {
@@ -18,7 +18,7 @@ themeToggle.addEventListener('click', () => {
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
     
     // Update button text
-    themeToggle.textContent = isDarkMode ? 'Toggle Light Mode' : 'Toggle Dark Mode';
+    themeToggle.textContent = isDarkMode ? '라이트 모드 켜기' : '다크 모드 켜기';
 });
 
 generatorBtn.addEventListener('click', () => {
