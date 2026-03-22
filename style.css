@@ -172,4 +172,9 @@ h1, h2 {
     margin-top: 2rem;
     padding: 2rem;
     text-align: left;
+    min-height: 300px; /* 로딩 중에도 자리를 차지하도록 설정 */
+}
+
+#disqus_thread {
+    width: 100%;
 }
