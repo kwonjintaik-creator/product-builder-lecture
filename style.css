@@ -38,6 +38,43 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.top-nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 100;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border: 1px solid var(--text-color);
+    border-radius: 20px;
+    transition: all 0.3s;
+    background-color: var(--container-bg);
+}
+
+.nav-link:hover {
+    background-color: var(--text-color);
+    color: var(--container-bg);
+}
+
+#theme-toggle {
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
 .container {
     text-align: center;
     background-color: var(--container-bg);
@@ -101,22 +138,6 @@ h1, h2 {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-#theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 8px 16px;
-    cursor: pointer;
-    background-color: var(--container-bg);
-    color: var(--text-color);
-    border: 1px solid var(--text-color);
-    border-radius: 20px;
-    font-size: 0.9rem;
-    transition: all 0.3s;
-    z-index: 100;
-}
-
-/* Partnership Form Styles */
 .partnership-form {
     display: flex;
     flex-direction: column;
@@ -143,13 +164,6 @@ h1, h2 {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: inherit;
-    transition: border-color 0.3s;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--button-bg);
 }
 
 #submit-btn {
@@ -160,12 +174,6 @@ h1, h2 {
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-}
-
-#submit-btn:hover {
-    background-color: var(--button-hover);
 }
 
 .disqus-container {
@@ -173,86 +181,9 @@ h1, h2 {
     padding: 2rem;
     text-align: left;
     min-height: 300px;
-}
-
-/* Animal Face Test Styles */
-.animal-test-container {
-    margin-bottom: 2rem;
-}
-
-.upload-area {
-    border: 2px dashed var(--button-bg);
-    padding: 2rem;
-    border-radius: 12px;
-    cursor: pointer;
-    margin-bottom: 1.5rem;
-    transition: background-color 0.3s;
+    width: 90%;
+    max-width: 500px;
     background-color: var(--container-bg);
-}
-
-.upload-area:hover {
-    background-color: rgba(76, 175, 80, 0.05);
-}
-
-#label-container {
-    margin-top: 1.5rem;
-    text-align: left;
-    max-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.result-bar-wrapper {
-    margin-bottom: 15px;
-}
-
-.result-label {
-    font-size: 0.9rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.result-bar-bg {
-    background-color: #e0e0e0;
-    height: 12px;
-    border-radius: 6px;
-    overflow: hidden;
-}
-
-.result-bar-fill {
-    height: 100%;
-    background-color: var(--button-bg);
-    width: 0%;
-    transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-#loading-spinner .spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border-left-color: var(--button-bg);
-    animation: spin 1s linear infinite;
-    margin: 0 auto 10px;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-#retry-btn {
-    background-color: transparent;
-    border: 1px solid var(--text-color);
-    color: var(--text-color);
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-#retry-btn:hover {
-    background-color: var(--text-color);
-    color: var(--container-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
 }
